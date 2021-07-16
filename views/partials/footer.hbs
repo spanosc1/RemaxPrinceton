@@ -1,0 +1,102 @@
+<div class="{{hiddenFooter}}">
+	<div id="featuredArticles" class="container-fluid">
+		<div class="row">
+			{{#each featuredPosts}}
+				<div class="col-lg-3 col-md-6 articleCol">
+					<div class="articleContainer">
+						<div class="articleImage" style="background-image: url('{{this.imagePath}}')"></div>
+						<a href="/post/{{this._id}}" class="featuredInfo featuredLink">
+							<div class="featuredInfoContainer">
+								<div class="featuredDetails">
+									<span class="featuredAuthor">{{this.authorName}}</span>
+									<span class="featuredDate">{{dateStringConvert this.date}}</span>
+								</div>
+								<p class="featuredTitle">{{this.title}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="reviewContainer">
+		<div class="leftArrowContainer">
+			<i class="fa fa-chevron-left arrow arrowLeft" aria-hidden="true"></i>
+		</div>
+		<div class="rightArrowContainer">
+			<i class="fa fa-chevron-right arrow arrowRight" aria-hidden="true"></i>
+		</div>
+		<div id="reviewCarousel">
+			<div class="carouselItem">
+				{{!-- <div class="reviewImage"></div> --}}
+				<p class="reviewName">Karthick Dalawai</p>
+				<p class="reviewComment">Doug worked with us to get our first home. He clearly understood our
+					requirements and would give his impartial opinion after each viewing
+					with his rationale. The detailing helped us in narrowing down our
+					options. He is extremely patient and is highly responsive. His
+					negotiation skills are par excellence which helped us get a good deal.
+					He has a great team of people to work with right through the process.
+					Overall highly positive experience and I would recommend Doug to any
+					prospective buyer.</p>
+				<div class="starRow">
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="carouselItem">
+				{{!-- <div class="reviewImage"></div> --}}
+				<p class="reviewName">zaka 57</p>
+				<p class="reviewComment">We have worked with Anna both as sellers and buyers on numerous
+					occasions and would not use any other Realtor! Her knowledge of the
+					neighborhoods and market as well as her unique marketing efforts
+					make her a tremendous, well-rounded agent. Anna recently helped us
+					navigate through a purchase of an investment property and her
+					experience played an important part in making it a smooth transaction
+					as well as a sound investment. Thank You Anna Shulkina!</p>
+				<div class="starRow">
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="carouselItem">
+				{{!-- <div class="reviewImage"></div> --}}
+				<p class="reviewName">mislacheta</p>
+				<p class="reviewComment">Very professional, honest, knowledgeable.
+					Jim was able to explain me a lot of details that entailed the business
+					transaction. He was always patient and thoughtful when sharing his
+					knowledge with me.
+					I was always able to count on his best advice and professional judgment
+					I am grateful for all the help Jim provided me in the process of getting
+					my new home.</p>
+				<div class="starRow">
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<i class="fa fa-star" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footerOverlay">
+			<div id="newsletterIncomplete">
+				<p id="newsletterErrorMessage">Please enter your email</p>
+			</div>
+			<div class="footerContentContainer">
+				<p id="newsletterText">Sign up for our newsletter</p>
+				<input id="emailInput" placeholder="you@example.com"/>
+				<button href="#" id="submitEmailButton">Submit</button>
+				<p class="copyright">COPYRIGHT REMAX 2018 - DEVELOPED BY <a id="link" href="https://www.fortitudedev.com">FORTITUDE</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/javascripts/footer.js"></script>
+<script type="text/javascript" src="/javascripts/slick.js"></script>

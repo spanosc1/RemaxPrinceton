@@ -1,0 +1,36 @@
+<div class="blogBody">
+  <div class="container">
+  	<div class="row">
+  		<div class="col-lg-8 col-md-12 myPostColLeft">
+		  	<div class="blogPost">
+		  		<div class="postImg" style="background-image: url('{{post.imagePath}}')">
+		  		</div>
+		  		<div class="postBody">
+						<p id="postTitle">{{post.title}}</p>
+						<p class="itemDate">{{dateStringConvert post.date}}<span class="itemAuthor">{{post.authorName}}</span></p>
+						<div id="dateUnderline"></div>
+						<p>{{{post.body}}}</p>
+						<div id="dateUnderline"></div>
+						<a class="backLink" href="/blog">Back to all posts</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-12 myPostColLeft">
+				<div class="otherPosts">
+					{{#each posts}}
+			      <div class="otherItem">
+			      	<a href="/post/{{this._id}}">
+				        <p class="otherTitle">{{this.title}}</p>
+				        <p class="otherDate">{{dateStringConvert this.date}}</p>
+				      </a>
+			        <div class="otherUnderline"></div>
+			      </div>
+			    {{/each}}
+			    <a class="backLink" href="/blog">Back to all posts</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>

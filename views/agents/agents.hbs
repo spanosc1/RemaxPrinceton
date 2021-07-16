@@ -1,0 +1,160 @@
+<script src="/javascripts/parallax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR1gosqIfCh1MqibdjQlULiXg4kyTq-2E&callback=myMap&libraries=places"></script>
+
+<div class="agentsContainer">
+	<div class="agentsParallax parallax-window" data-parallax="scroll" data-image-src="/images/fwdprincetonpictures/Nassau Princeton NJ 08540 USA-large-013-6-Community photos-1500x1000-72dpi.jpg">
+		<div class="agentsParallaxOverlay">
+			<div class="parallaxContent">
+				<p id="agentsTitle">Our Agents</p>
+			</div>
+		</div>
+	</div>
+	{{!-- Mobile version, hidden on desktop
+	<div class="agentsParallax" id="homeMobileHeader">
+		<div class="agentsParallaxOverlay">
+			<div class="parallaxContent">
+				<p id="agentsTitle">Our Agents</p>
+			</div>
+		</div>
+	</div> --}}
+	<div class="agentsList">
+		<div class="container">
+			<div class="row">
+				{{# each agents}}
+					<div class="col-lg-4 offset-lg-0 col-md-6 offset-md-0 col-sm-10 offset-sm-1 col-12">
+						<div class="agentCard">
+							<div class="agentImage" style="background-image: url('{{this.imagePath}}'">
+								<div data-toggle="modal" data-target="#agentModal" class="agentImageContainer">
+									<div class="agentImageOverlay">
+										<div class="cardBodyText">
+											<p class="agentName">{{this.name}}</p>
+											<p class="agentTitle">{{this.title}}</p>
+											<p class="agentOrg">{{this.organization}}</p>
+											<p class="agentPhone">{{this.preferredPhone}}</p>
+											<p class="agentIndex">{{@index}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	<!--Map and Contact-->
+	<div id="contactContainer" class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6 contactCol">
+				<div id="homeMap"></div>
+			</div>
+			<div class="col-sm-6 contactCol">
+				<div id="contactContent">
+					<div id="contactInner">
+						<a href="/contact" id="contactButton">Contact Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal bd-example-modal-lg" id="agentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div id="agentModalContent" class="modal-content">
+      <div id="agentModalBody" class="modal-body container">
+				<div id="modalDismiss">
+					<i class="fas fa-times timesIconAgents"></i>
+				</div>
+      	<div class="row">
+      		<div class="col-12 col-lg-5" id="agentLeft">
+      			<div id="agentModalImage">
+      			</div>
+						<div id="agentRightMobile">
+							<div id="agentGeneral">
+								<p class="agentNameModal"></p>
+								<p class="agentTitleModal"></p>
+								<p class="agentOrgModal"></p>
+							</div>
+							<!--<p id="agentAddress"><i class="fa fa-map-marker-alt" id="agentMarkerIcon" aria-hidden="true"></i> 54 Broad St. Red Bank, NJ 07701</p>
+							<p id="agentLicense">license #{{agents.0.licenseNumber}}</p>-->
+							<p class="agentBioModal">
+							</p>
+						</div>
+      			<div id="agentModalContactContainer">
+      				<p id="agentContactHeader">Contact</p>
+      				<p class="modalContactRow">
+	      				<span class="contactInfoHeader">Preferred #</span>
+	      				<span class="contactNumber" id="preferredPhone"></span>
+	      			</p>
+	      			<p class="modalContactRow">
+	      				<span class="contactInfoHeader">Direct #</span>
+	      				<span class="contactNumber" id="directPhone"></span>
+	      			</p>
+	      			<p class="modalContactRow">
+	      				<span class="contactInfoHeader">Mobile #</span>
+	      				<span class="contactNumber" id="mobilePhone"></span>
+	      			</p>
+	      			<p class="modalContactRow">
+	      				<span class="contactInfoHeader">Email</span>
+	      				<span class="contactNumber" id="agentEmail"></span>
+	      			</p>
+							<div class="agentContactButton">
+								<p class="contactMeText">
+									Contact me
+								</p>
+							</div>
+      			</div>
+						<div class="agentContactForm">
+							<div id="formIncomplete">
+								<p id="formErrorMessage">Please fill out all fields</p>
+							</div>
+							<input id="agentContactName" class="agentContactInput" placeholder="Name" autocomplete="off" type="text"/>
+							<input id="agentContactEmail" class="agentContactInput" placeholder="Email" autocomplete="off" type="text"/>
+							<textarea id="agentContactMessage" class="agentContactInput" type="text" name="message" autocomplete="off" rows="3" placeholder="Your Message"></textarea>
+							<div id="agentContactSend" class="agentContactButton">
+								<p id="agentSendText" class="contactMeText">
+									Send
+								</p>
+							</div>
+						</div>
+      		</div>
+      		<div class="col-12 col-lg-7" id="agentRight">
+      			<div id="agentGeneral">
+	      			<p class="agentNameModal"></p>
+	      			<p class="agentTitleModal"></p>
+							<p class="agentOrgModal"></p>
+						</div>
+						<!--<p id="agentAddress"><i class="fa fa-map-marker-alt" id="agentMarkerIcon" aria-hidden="true"></i> 54 Broad St. Red Bank, NJ 07701</p>
+						<p id="agentLicense">license #{{agents.0.licenseNumber}}</p>-->
+						<p class="agentBioModal">
+						</p>
+      		</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var parsed = {{{json agents}}};
+	console.log(parsed);
+	//var parsed = JSON.parse(data);
+	$('.agentCard').on("click", function() {
+		var i = $(this).find(".agentIndex")[0].innerText;
+		var modal = $("#agentModalBody");
+		modal.find('.agentNameModal').text(parsed[i].name)
+		modal.find('.agentTitleModal').text(parsed[i].title);
+		modal.find('.agentOrgModal').text(parsed[i].organization);
+		modal.find('#agentModalImage').css("background-image", "url(" + parsed[i].imagePath + ")");
+		modal.find('#preferredPhone').text(parsed[i].preferredPhone);
+		modal.find('#directPhone').text(parsed[i].directPhone);
+		modal.find('#mobilePhone').text(parsed[i].mobilePhone);
+		modal.find('#agentEmail').text(parsed[i].email);
+		modal.find('.agentBioModal').text(parsed[i].bio);
+	});
+</script>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/agents.js"></script>

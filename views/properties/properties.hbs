@@ -1,0 +1,163 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR1gosqIfCh1MqibdjQlULiXg4kyTq-2E&callback=myMap&libraries=places"></script>
+
+<div id="propertiesBody" class="container-fluid">
+	<div class="toggleMap">
+		<i class="fas fa-map-marker-alt markerIcon"></i>
+	</div>
+	<div id="searchSortBar" class="row">
+		<div class="col-md-4 col-xs-11 col-10 myPropsCol">
+			<div id="searchGroup" class="input-group">
+        <input type="text" class="form-control" value="{{term}}" max="{{price}}" propType="{{type}}" placeholder="Search" name="searchTerm" id="searchTerm">
+        <div class="input-group-btn">
+          <button id="clearSearch" class="btn btn-default" type="submit"><i class="fas fa-times clearSearch"></i></button>
+        </div>
+				<div class="input-group-btn">
+          <button id="propSearchButton" class="btn btn-default" type="submit"><i class="fas fa-search searchProps"></i></button>
+        </div>
+    	</div>
+		</div>
+		<div class="col-xs-1 col-2 mobileFilterButton">
+			<i class="fas fa-filter filterIcon"></i>
+		</div>
+		<div class="col-md-2 myPropsCol">
+			<div class="dropdown">
+			  <button class="dropdownMenuButton dropdown-toggle" type="button" id="bedroomButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Bedrooms
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="dropdown-item sortBed" val="0">All</a>
+					<a class="dropdown-item sortBed" val="1">1 bedroom</a>
+			    <a class="dropdown-item sortBed" val="2">2 bedroom</a>
+			    <a class="dropdown-item sortBed" val="3">3 bedroom</a>
+					<a class="dropdown-item sortBed" val="4">4 bedroom</a>
+			    <a class="dropdown-item sortBed" val="5">5+ bedroom</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-2 myPropsCol">
+			<div class="dropdown">
+			  <button class="dropdownMenuButton dropdown-toggle" type="button" id="bathroomButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Bathrooms
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="dropdown-item sortBath" val="0">All</a>
+					<a class="dropdown-item sortBath" val="1">1 bathroom</a>
+			    <a class="dropdown-item sortBath" val="2">2 bathroom</a>
+			    <a class="dropdown-item sortBath" val="3">3 bathroom</a>
+					<a class="dropdown-item sortBath" val="4">4 bathroom</a>
+			    <a class="dropdown-item sortBath" val="5">5+ bathroom</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-2 myPropsCol">
+			<div class="dropdown">
+			  <button class="dropdownMenuButton dropdown-toggle" type="button" id="priceButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Price 
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item sortPrice" min="0" max="0">All</a>
+			    <a class="dropdown-item sortPrice" min="0" max="100000"><$100,000</a>
+			    <a class="dropdown-item sortPrice" min="100000" max="250000">$100,000 - $250,000</a>
+			    <a class="dropdown-item sortPrice" min="250000" max="500000">$250,000 - $500,000</a>
+					<a class="dropdown-item sortPrice" min="500000" max="750000">$500,000 - $750,000</a>
+					<a class="dropdown-item sortPrice" min="750000" max="1000000">$750,000 - $1,000,000</a>
+					<a class="dropdown-item sortPrice" min="1000000" max="10000000">$1,000,000 +</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-2 myPropsCol">
+			<div class="dropdown">
+			  <button class="dropdownMenuButton dropdown-toggle" type="button" id="typeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Type
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item sortType" val="All">All</a>
+			    <a class="dropdown-item sortType" val="Residential">Residential</a>
+			    <a class="dropdown-item sortType" val="Single Family Listing">Single Family Listing</a>
+					<a class="dropdown-item sortType" val="Residential Lease">Residential Lease</a>
+					<a class="dropdown-item sortType" val="Rental Listing">Rental Listing</a>
+					<a class="dropdown-item sortType" val="Commercial Sale">Commercial Sale</a>
+					<a class="dropdown-item sortType" val="Other">Other</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div id="propertiesContent" class="row">
+		<div class="col-md-6 mapCol">
+			<div id="propertiesMap">
+				<script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-32915" src="//remaxprinceton.idxbroker.com/idx/mapwidgetjs.php?widgetid=32915"></script>
+			</div>
+		</div>
+		<div class="col-md-6 propCol">
+			<div class="propertiesList">
+				<div class="card">
+					<div class="gradient element1"></div>
+					<div class="gradient element2"></div>
+					<div class="gradient element3"></div>
+				</div>
+				<div class="card">
+					<div class="gradient element1"></div>
+					<div class="gradient element2"></div>
+					<div class="gradient element3"></div>
+				</div>
+				<div class="card">
+					<div class="gradient element1"></div>
+					<div class="gradient element2"></div>
+					<div class="gradient element3"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="propertyModalBody" class="modal-body">
+      	<div id="mainImage">
+      		<div class="expandContainer">
+      			<i class="fas fa-expand expandIcon"></i>
+      		</div>
+      	</div>
+      	<div class="thumbnailContainer">
+      	</div>
+      	<div class="container-fluid">
+      		<div class="row">
+      			<div class="col-sm-8">
+      				<p id="propertyAddress"></p>
+      				<p id="propertyTown"></p>
+      				<p id="propertyInfo"></p>
+      				<div class="propDividerModal"></div>
+      				<p id="propertyComment"></p>
+      			</div>
+      			<div class="col-sm-4">
+      				<p id="propertyType"></p>
+      				<p id="propertyPrice"></p>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <a href="/" id="fullDetails" class="btn" target="_blank">Full Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="expandedView">
+	<div class="dismissExpanded">
+		<span class="dismissIcon" aria-hidden="true">&times;</span>
+	</div>
+	<img id="expandedImage" src="0"/>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/properties.js"></script>
+<script type="text/javascript" src="/javascripts/slick.js"></script>

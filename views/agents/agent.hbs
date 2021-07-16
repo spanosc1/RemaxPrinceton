@@ -1,0 +1,38 @@
+<div class="agentContainer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 col-md-3">
+				<div id="agentImgContainer">
+					<div id="agentImg" style="background-image: url('{{agent.imagePath}}')"></div>
+				</div>
+			</div>
+			<div class="col-sm-7 col-md-6">
+				<div id="agentContent">
+					<p id="agentName">{{agent.name}}, {{agent.title}}</p>
+					<p id="agentOrg">{{agent.organization}}</p>
+					<p id="agentAddress"><i class="fa fa-map-marker-alt" id="agentMarkerIcon" aria-hidden="true"></i> 54 Broad St. Red Bank, NJ 07701</p>
+					<p id="agentLicense">license #{{agent.licenseNumber}}</p>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3 contactColumn">
+				<p class="agentContactHeader">CONTACT</p>
+				<p class="contactInfoHeader">Preferred #</p>
+				<p class="contactNumberPreferred">{{agent.preferredPhone}}</p>
+				<p class="contactInfoHeader">Direct #</p>
+				<p class="contactNumber">{{agent.directPhone}}</p>
+				<p class="contactInfoHeader">Mobile #</p>
+				<p class="contactNumber">{{agent.mobilePhone}}</p>
+				<p class="contactInfoHeader">Email</p>
+				<p class="contactEmail">{{agent.email}}</p>
+				<p class="agentContactHeader">Office</p>
+				<p class="contactInfoHeader">Office #</p>
+				<p class="contactNumber">{{agent.officePhone}}</p>
+				<p class="contactInfoHeader">Office fax</p>
+				<p class="contactEmail">{{agent.officeFax}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/agent.js"></script>

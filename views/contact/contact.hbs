@@ -1,0 +1,99 @@
+<script src="/javascripts/parallax.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR1gosqIfCh1MqibdjQlULiXg4kyTq-2E&callback=myMap&libraries=places"></script>
+
+<div class="contactContainer">
+	<div class="container-fluid">
+		<div class="row infoAndMapRow">
+			<div class="col-md-6 infoCol">
+				<div class="row infoRow">
+					<div class="iconContainer">
+						<i class="fas fa-phone contactIcon"></i>
+					</div>
+					<p class="contactInfo">609.921.9202</p>
+				</div>
+				<div class="row infoRow">
+					<div class="iconContainer">
+						<i class="fas fa-envelope contactIcon"></i>
+					</div>
+					<p class="contactInfo">remaxprincetonnassau@gmail.com</p>
+				</div>
+				<div class="row infoRow">
+					<div class="iconContainer">
+						<i class="fas fa-map-marker-alt contactIcon"></i>
+					</div>
+					<p class="contactInfo">343 Nassau St, Princeton, NJ 08540</p>
+				</div>
+			</div>
+			<div id="map1Col" class="col-md-6 mapCol">
+				<div id="contactMap"></div>
+			</div>
+		</div>
+		<div class="row mobileMapRow">
+			<div class="col-md-6 mapCol">
+				<div id="contactMap2"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="contactBackground parallax-window" data-parallax="scroll" data-image-src="/images/fwdprincetonpictures/Nassau Princeton NJ 08540 USA-large-007-10-Community photos-1500x1000-72dpi.jpg">
+				<div class="contactOverlay">
+					<div id="contactIncomplete">
+						<p id="contactErrorMessage">Please complete the form</p>
+					</div>
+					<form class="formContainer" action="/emailremax" method="POST" autocomplete="off">
+						<p id="contactUs">Contact Us</p>
+						<input id="email" class="input" type="text" name="email" autocomplete="off" placeholder="Email*">
+						<input id="name" class="input" type="text" name="name" autocomplete="off" placeholder="Name*">
+						<input id="number" class="input" type="text" name="number" autocomplete="off" placeholder="Phone Number">
+						<textarea id="message" class="inputArea" type="text" name="message" autocomplete="off" rows="4" placeholder="Your Message*"></textarea>
+						<div class="buttonContainer">
+							<a id="contactSubmit" class="btn">Send</a>
+						</div>
+					</form>
+					<p id="result">Thank You!</p>
+				</div>
+			</div>
+		</div>
+		<!--Instagram-->
+		<div class='row'>
+			<div class="instagramContainer">
+				<div class="instagramLogoContainer">
+					<i class="instagramLogo fab fa-instagram"></i>
+				</div>
+				<div class="leftContainer arrowContainer">
+					<i class="arrowLeft fas fa-chevron-left"></i>
+				</div>
+				<div class="rightContainer arrowContainer">
+					<i class="arrowRight fas fa-chevron-right"></i>
+				</div>
+				<div class="carousel">
+				  <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-003-8-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-004-3-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-005-2-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-006-14-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-009-5-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-012-9-Community photos-666x444-72dpi.jpg">
+			    </div>
+			    <div>
+			      <img class="myImage" src="/images/princeton/Nassau Princeton NJ 08540 USA-small-014-13-Community photos-666x444-72dpi.jpg">
+			    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/contact.js"></script>
+<script type="text/javascript" src="/javascripts/slick.js"></script>

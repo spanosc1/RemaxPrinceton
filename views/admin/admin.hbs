@@ -1,0 +1,522 @@
+<script type="text/javascript" src="/javascripts/admin.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+<nav id="adminNav" class="navbar navbar-expand-md navbar-dark bg-dark">
+  <span class="navbar-brand" id="openNav">&#8249;</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar7">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse justify-content-stretch" id="navbar7">
+    <ul class="navbar-nav ml-auto">
+    	<li class="nav-item">
+        <a class="nav-link" id="siteLink" href="/">Go to Site</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="logoutLink" href="/admin/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div id="mySidenav" class="sidenav">
+	<ul class="nav nav-tabs tabs-left">
+    <li class="active"><a class="adminTabs" id="newPostTab" href="#newPost" data-toggle="tab">Add New Post</a></li>
+    <li><a class="adminTabs" href="#allPosts" data-toggle="tab">All Posts</a></li>
+    <li><a class="adminTabs" href="#newAgent" data-toggle="tab">Add New Agent</a></li>
+    <li><a class="adminTabs" href="#allAgents" data-toggle="tab">All Agents</a></li>
+		<li><a class="adminTabs" href="#emails" data-toggle="tab">Newsletter Signups</a></li>
+  </ul>
+</div>
+
+<!--Content-->
+<div class="container-fluid editContainer">
+	<div class="tab-content">
+		<!--New post tab content-->
+		<div id="newPost" class="tab-pane active in">
+			<div class="row">
+				<div class="col-sm-9">
+					<!--Main form for uploading a new blog post-->
+					<h3>Add new blog post</h3>
+					<form action="/admin/add-post" enctype="multipart/form-data" method="post">
+						<div class="form-group">
+							<label for="postTitleAdmin">Title*</label>
+							<input autocomplete="off" type="text" id="postTitleAdmin" name="postTitleAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="postDesc">Description*</label>
+							<input autocomplete="off" type="text" id="postDesc" name="postDesc" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="postContent">Content*</label>
+							<textarea type="text" id="postContent" name="postContent" class="form-control" required></textarea>
+						</div>
+						<!--Image uploader, loadFile() handles displaying of preview-->
+						<div class="form-group">
+							<label for="imgURL">Cover Photo (URL)*</label>
+							<input autocomplete="off" type="text" id="imgURL" name="imgURL" class="form-control" required>
+						</div>
+						<img id="preview" src="">
+						<div class="form-group">
+							<label for="imgCaption">Image Caption</label>
+							<input autocomplete="off" type="text" id="imgCaption" name="imgCaption" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="author">Author*</label>
+							<input autocomplete="off" type="text" id="author" name="author" class="form-control" required>
+						</div>
+						<input type="checkbox" name="feature" value="feature"> Feature this post<br>
+						<br>
+						<!--Hidden inputs:	whether an image was added to the post, and finally the csrf token for validation-->
+						<!--<input type="hidden" name="author" value="{{session.email}}">-->
+						<input type="hidden" name="addedImg" id="addedImg">
+						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						<button type="submit" class="btn btn-primary">Submit Item</button>
+					</form>
+				</div>
+				<div id="imageStoreCol" class="col-sm-3">
+					<!--List of images the user can use in their blog posts-->
+					<p id="imageStoreLabel">Image Store</p>
+					<div id="imageStoreList">
+						<!--Upload form for new images-->
+						<form class="upload" id="imageStore" enctype="multipart/form-data" action="/admin/add-image" method="post">
+							<input id="userPhoto" type="file" name="userPhoto" />
+							<br>
+							<button type="submit" id="uploadImageBtn" class="hidden btn btn-primary">
+							Upload Image</button>
+							<img id="previewTwo" src=""><br>
+							<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						</form>
+						<!--Displays all uploaded images-->
+						{{# each pics }}
+							<img class="uploaded" src="{{ this.imagePath }}">
+							<input class="imageURL" id="{{this.imagePath}}" value="{{ this.imagePath }}">
+							<br><br>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--All posts tab content-->
+		<div id="allPosts" class="tab-pane in">
+			<div class="row">
+				<!--The list of current blog posts.  Includes a search bar-->
+				<div class="col-sm-12">
+					<input id="searchTermAdmin" autocomplete="off" type="text" class="form-control" placeholder="Search by Title">
+					<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">Title</th>
+					      <th scope="col">Image</th>
+					      <th scope="col">Date</th>
+					      <th scope="col">Author</th>
+					      <th scope="col">Featured</th>
+					    </tr>
+					  </thead>
+					  <tbody class="itemListAdmin">
+					  	{{# if posts}}
+								{{# each posts}}
+									<tr class="itemAdmin" data-toggle="modal" data-target="#myModalPost">
+										<td>
+											<p class="adminTitle">{{this.title}}</p>
+										</td>
+										<td>
+											<img class="adminImg" src="{{this.imagePath}}">
+										</td>
+										<td>
+											<p class="adminDate">{{adminDateStringConvert this.date}}</p>
+										</td>
+										<td>
+											<p class="adminAuthor">{{this.authorName}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminContent">{{this.body}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminDescription">{{this.description}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminCaption">{{this.imageCaption}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminId">{{this._id}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminFeatured">{{this.featured}}</p>
+										</td>
+										<td>
+											{{# if this.featured}}
+												<p>Yes</p>
+											{{ else }}
+												<p>No</p>
+											{{/if}}
+										</td>
+									</tr>
+								{{/each}}
+							{{ else }}
+								<h2>No posts</h2>
+							{{/if}}
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--New agent form-->
+		<div id="newAgent" class="tab-pane in">
+			<div class="row">
+				<div class="col-sm-9">
+					<h3>Add new agent</h3>
+					<form action="/admin/add-agent" enctype="multipart/form-data" method="post">
+						<div class="form-group">
+							<label for="agentProfile">Profile Image (URL)</label>
+							<input autocomplete="off" type="text" id="agentProfile" name="agentProfile" class="form-control">
+						</div>
+						<img id="agentPreview" src="">
+						<div class="form-group">
+							<label for="agentNameAdmin">Name*</label>
+							<input autocomplete="off" type="text" id="agentNameAdmin" name="agentNameAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentTitleAdmin">Title*</label>
+							<input autocomplete="off" type="text" id="agentTitleAdmin" name="agentTitleAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentBioAdmin">Bio</label>
+							<textarea autocomplete="off" rows="5" type="text" id="agentBioAdmin" name="agentBioAdmin" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="agentOrgAdmin">Organization*</label>
+							<input autocomplete="off" type="text" id="agentOrgAdmin" name="agentOrgAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentLicenseAdmin">License Number*</label>
+							<input autocomplete="off" type="text" id="agentLicenseAdmin" name="agentLicenseAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentCodeAdmin">Agent Code*</label>
+							<input autocomplete="off" type="text" id="agentCodeAdmin" name="agentCodeAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentPreferredAdmin">Preferred Phone</label>
+							<input autocomplete="off" type="text" id="agentPreferredAdmin" name="agentPreferredAdmin" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="agentDirectAdmin">Direct Phone</label>
+							<input autocomplete="off" type="text" id="agentDirectAdmin" name="agentDirectAdmin" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="agentPhoneAdmin">Mobile Phone</label>
+							<input autocomplete="off" type="text" id="agentPhoneAdmin" name="agentPhoneAdmin" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="agentEmailAdmin">Email*</label>
+							<input autocomplete="off" type="text" id="agentEmailAdmin" name="agentEmailAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentOfficeCodeAdmin">Office Code*</label>
+							<input autocomplete="off" type="text" id="agentOfficeCodeAdmin" name="agentOfficeCodeAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentOfficePhoneAdmin">Office Phone*</label>
+							<input autocomplete="off" type="text" id="agentOfficePhoneAdmin" name="agentOfficePhoneAdmin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="agentOfficeFaxAdmin">Office Fax*</label>
+							<input autocomplete="off" type="text" id="agentOfficeFaxAdmin" name="agentOfficeFaxAdmin" class="form-control" required>
+						</div>
+						
+						<br>
+						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						<button type="submit" class="btn btn-primary">Submit Item</button>
+					</form>
+				</div>
+				<div id="profileStoreCol" class="col-sm-3">
+					<p id="imageStoreLabel">Profile Store</p>
+					<div id="profileStoreList">
+						<!--Upload form for new images-->
+						<form class="upload" id="profileStore" enctype="multipart/form-data" action="/admin/add-profile" method="post">
+							<input id="userProfile" type="file" name="userPhoto" />
+							<br>
+							<button type="submit" id="uploadProfileBtn" class="hidden btn btn-primary">
+							Upload Profile</button>
+							<img id="previewThree" src=""><br>
+							<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						</form>
+						<!--Displays all uploaded images-->
+						{{# each profiles }}
+							<img class="uploaded" src="{{ this.imagePath }}">
+							<input class="imageURL" id="{{this.imagePath}}" value="{{ this.imagePath }}">
+							<br><br>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--All agents-->
+		<div id="allAgents" class="tab-pane in">
+			<div class="row">
+				<div class="col-sm-12">
+					<input id="searchAgentAdmin" autocomplete="off" type="text" class="form-control" placeholder="Search by Name">
+					<table class="table table-hover">
+					  <thead>
+					    <tr>
+					    	<th scope="col">Name</th>
+					      <th scope="col">Image</th>
+					      <th scope="col">Title</th>
+					      <th scope="col">Preferred #</th>
+					      <th scope="col">Agent #</th>
+					    </tr>
+					  </thead>
+					  <tbody class="agentListAdmin">
+					  	{{# if agents}}
+								{{# each agents}}
+									<tr class="agentAdmin" data-toggle="modal" data-target="#myModalAgent">
+										<td>
+											<p class="adminAgentName">{{this.name}}</p>
+										</td>
+										<td>
+											<img class="adminAgentImg" src="{{this.imagePath}}">
+										</td>
+										<td>
+											<p class="adminAgentTitle">{{this.title}}</p>
+										</td>
+										<td>
+											<p class="adminAgentPhone">{{this.preferredPhone}}</p>
+										</td>
+										<td>
+											<p class="adminAgentCode">{{this.agentCode}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentBio">{{this.bio}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentOrg">{{this.organization}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentLicense">{{this.licenseNumber}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentDirect">{{this.directPhone}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentMobile">{{this.mobilePhone}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentEmail">{{this.email}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentOfficeCode">{{this.officeCode}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentOfficePhone">{{this.officePhone}}</p>
+										</td>
+										<td class="hidden">
+											<p class="adminAgentFax">{{this.officeFax}}</p>
+										</td>
+										<td class="hidden">
+											<p class="agentId">{{this._id}}</p>
+										</td>
+									</tr>
+								{{/each}}
+							{{ else }}
+								<h2>No agents</h2>
+							{{/if}}
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--Newsletter signups-->
+		<div id="emails" class="tab-pane in">
+			<h3>Newsletter Signups</h3>
+			<button class="btn btn-primary" onclick="copyEmails()" id="copyEmailsButton">Copy comma separated list</button>
+			<p id="copied">Copied!</p>
+			<textarea readonly id="copyText"></textarea>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Email</th>
+						<th scope="col">Date</th>
+					</tr>
+				</thead>
+				<tbody class="agentListAdmin">
+					{{# if emails}}
+						{{# each emails}}
+							<tr class="emails">
+								<td>
+									<p>{{this.email}}</p>
+								</td>
+								<td>
+									<p>{{this.date}}</p>
+								</td>
+							</tr>
+						{{/each}}
+					{{ else }}
+						<h2>No recipients</h2>
+					{{/if}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--Modal, for editing existing posts-->
+  <div class="modal fade" id="myModalPost" role="dialog">
+    <div class="modal-dialog">
+    
+      <!--Modal content, editing fields-->
+      <div class="modal-content">
+        <div class="modal-header">
+	        <h5 class="modal-title">Edit Post</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+        <div class="modal-body post-modal-body">
+        	<form class="upload" enctype="multipart/form-data" action="/admin/update-post" method="post">
+						<div class="form-group">
+							<label for="newPostTitle">Title*</label>
+							<input autocomplete="off" type="text" id="newPostTitle" name="newPostTitle" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="newPostDescription">Description*</label>
+							<input autocomplete="off" type="text" id="newPostDescription" name="newPostDescription" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="newPostContent">Content*</label>
+							<textarea type="text" id="newPostContent" name="newPostContent" class="form-control" required></textarea>
+						</div>
+						<!--Image uploader, loadFile() handles displaying of preview-->
+						<div class="form-group">
+							<label for="newImgURL">Cover Photo (URL)*</label>
+							<input autocomplete="off" type="text" id="newImgURL" name="newImgURL" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="newImgCaption">Image Caption</label>
+							<input autocomplete="off" type="text" id="newImgCaption" name="newImgCaption" class="form-control">
+						</div>
+						<input id="newFeatured" type="checkbox" name="feature" value="feature"> Feature this post<br>
+						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						<!--Id of the post is passed to the server so it can update the correct record-->
+						<input type="hidden" name="id" id="Id">
+						<button type="submit" class="btn btn-primary">Update</button>
+					</form>
+	        </div>
+	        <!--Contains delete option-->
+        <div class="modal-footer">
+        	<form class="delete" action="" enctype="multipart/form-data" method="post">
+        		<p class="surePost">Are you sure?</p>
+        		<button type="submit" class="surePostButton btn btn-danger">Yes</button>
+        		<p id="deletePost" class="btn btn-danger">Delete</p>
+        		<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        	</form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal, for editing agent info-->
+  <div class="modal fade" id="myModalAgent" role="dialog">
+    <div class="modal-dialog">
+    
+      <!--Modal content, editing fields-->
+      <div class="modal-content">
+        <div class="modal-header">
+	        <h5 class="modal-title">Edit Agent</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+        <div class="modal-body agent-modal-body">
+        	<form class="upload" enctype="multipart/form-data" action="/admin/update-agent" method="post">
+						<div class="form-group">
+							<label for="newAgentName">Name*</label>
+							<input autocomplete="off" type="text" id="newAgentName" name="newAgentName" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="newAgentTitle">Title*</label>
+							<input autocomplete="off" type="text" id="newAgentTitle" name="newAgentTitle" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentBio">Bio</label>
+							<textarea autocomplete="off" rows="5" type="text" id="newAgentBio" name="newAgentBio" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="newAgentPreferred">Preferred Phone*</label>
+							<input autocomplete="off" type="text" id="newAgentPreferred" name="newAgentPreferred" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentProfile">Profile Image*</label>
+							<input autocomplete="off" type="text" id="newAgentProfile" name="newAgentProfile" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentOrg">Organization</label>
+							<input autocomplete="off" type="text" id="newAgentOrg" name="newAgentOrg" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentLicense">License Number</label>
+							<input autocomplete="off" type="text" id="newAgentLicense" name="newAgentLicense" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentCode">Agent Code</label>
+							<input autocomplete="off" type="text" id="newAgentCode" name="newAgentCode" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentDirect">Direct Phone</label>
+							<input autocomplete="off" type="text" id="newAgentDirect" name="newAgentDirect" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentMobile">Mobile Phone</label>
+							<input autocomplete="off" type="text" id="newAgentMobile" name="newAgentMobile" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentEmail">Email</label>
+							<input autocomplete="off" type="text" id="newAgentEmail" name="newAgentEmail" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentOfficeCode">Office Code</label>
+							<input autocomplete="off" type="text" id="newAgentOfficeCode" name="newAgentOfficeCode" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentOfficePhone">Office Phone</label>
+							<input autocomplete="off" type="text" id="newAgentOfficePhone" name="newAgentOfficePhone" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newAgentFax">Office Fax</label>
+							<input autocomplete="off" type="text" id="newAgentFax" name="newAgentFax" class="form-control">
+						</div>
+						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						<!--Id of the post is passed to the server so it can update the correct record-->
+						<input type="hidden" name="id" id="agentId">
+						<button type="submit" class="btn btn-primary">Update</button>
+					</form>
+	        </div>
+	        <!--Contains delete option-->
+        <div class="modal-footer">
+        	<form class="deleteAgent" action="" enctype="multipart/form-data" method="post">
+        		<p class="sureAgent">Are you sure?</p>
+        		<button type="submit" class="sureAgentButton btn btn-danger">Yes</button>
+        		<p id="deleteAgent" class="btn btn-danger">Delete</p>
+        		<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        	</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var data = '{{{json emails}}}';
+	var parsed = JSON.parse(data);
+	var emailCSV = parsed[0].email;
+	for(var i = 1; i < parsed.length; i++)
+	{
+		emailCSV = emailCSV + ',' + parsed[i].email;
+	}
+	$("#copyText").text(emailCSV);
+	function copyEmails() {
+		$("#copyText").select();
+		document.execCommand('copy');
+		$("#copied").css("opacity", 1);
+		setTimeout(function() {
+			$("#copied").css("opacity", 0);
+		}, 2000);
+	}
+</script>

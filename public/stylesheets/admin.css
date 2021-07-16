@@ -1,0 +1,183 @@
+#adminNav {
+	position: fixed;
+	width: 100%;
+	z-index: 3;
+	border-bottom: 1px solid transparent;
+	display: flex;
+}
+
+#logoutLink, #siteLink {
+	color: #ffffff;
+	font-family: 'Open-Sans', sans-serif;
+}
+
+#openNav {
+	font-size: 3em;
+	cursor: pointer;
+	line-height: 0.5em;
+	margin-top: -15px;
+}
+
+div.editContainer {
+	min-height: 100vh;
+	padding-top: 60px;
+	padding-left: 140px;
+	background-color: #fafafa;
+	font-size: 0.8em;
+}
+
+.sidenav {
+  height: 100%;
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0px;
+  background-color: #333333;
+  overflow-x: hidden;
+  padding-top: 60px;
+}
+
+#mySidenav .nav-tabs {
+	border-bottom: 0;
+	font-size: 0.9em;
+}
+
+.sidenav a {
+  padding: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #ffffff;
+  display: block;
+  width: 100%;
+}
+
+.sidenav a:hover {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.newPost {
+	padding-top: 10px;
+}
+
+#newPost .form-group, #newAgent .form-group {
+	margin-bottom: 2px;
+}
+
+.form-group label {
+	margin: 0px;
+}
+
+.form-group .form-control {
+	padding: 0px 2px 0px 2px;
+	border-radius: 0px;
+	font-size: 1em;
+}
+
+.itemListAdmin .itemAdmin td, .agentListAdmin .agentAdmin td {
+	padding: 7px 0px 0px 2px;
+}
+
+/*Images for the post list*/
+.adminImg, .agentImg, .adminAgentImg {
+	margin-top: -12px;
+	height: 25px;
+	width: auto;
+	transition: transform .2s; /* Animation */
+}
+
+.adminImg:hover, .agentImg:hover, .adminAgentImg:hover {
+	transform: scale(5);
+}
+
+.adminTitle, .adminDate, .adminAuthor, .agentName, .agentTitle, .agentAddress, .agentOffice, .agentPhone {
+	line-height: 1.2em;
+	margin-bottom: 0px;
+}
+
+.itemAdmin:hover, .agentAdmin:hover {
+	cursor: pointer;
+} 
+
+/*Are you sure? display, shows on deleting a post*/
+.surePost, .sureAgent, .surePostButton, .sureAgentButton {
+	display: none;
+	opacity: 0.0;
+}
+
+/*Search bar for the admin page*/
+#searchTermAdmin, #searchAgentAdmin {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	font-size: 0.9em;
+}
+
+/*Image previews when uploading images*/
+#preview, #agentPreview {
+	height: 150px;
+	width: auto;
+}
+
+#previewTwo, #previewThree {
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+#imageStoreCol, #profileStoreCol {
+	height: calc(100vh - 60px);
+	overflow-y: auto;
+	background-color: #dddddd;
+	padding: 15px;
+	overflow-x: hidden;
+}
+
+#imageStoreLabel, #profileStoreLabel {
+	text-align: center;
+}
+
+#uploadImageBtn, #uploadProfileBtn {
+	width: 100%;
+	display: none;
+}
+
+/*Images uploaded to image store*/
+.uploaded {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+.imageURL {
+	width: 100%;
+}
+
+/*Each image item in store*/
+li { 
+	display: inline-block;
+}
+
+#copied {
+	opacity: 0
+}
+
+#copyText {
+	height: 1px;
+	width: 1px;
+	padding: 0px;
+	border: 0;
+	position: absolute;
+	top: -1px;
+	opacity: 0;
+}

@@ -1,0 +1,39 @@
+<script src="/javascripts/parallax.min.js"></script>
+
+<div class="blogBody">
+  <div class="blogParallax parallax-window" data-parallax="scroll" data-image-src="/images/fwdprincetonpictures/Nassau Princeton NJ 08540 USA-large-013-6-Community photos-1500x1000-72dpi.jpg">
+		<div class="blogParallaxOverlay">
+			<div class="parallaxContent">
+				<p id="blogTitle">Blog</p>
+			</div>
+		</div>
+	</div>
+  <div class="container">
+    <div class="row">
+      {{#each posts}}
+        <div class="col-md-6 blogContainer">
+          <div class="blogItem">
+            <a class="blogImgLink" href="/post/{{this._id}}">
+              <div class="blogImgContainer" style="background-image: url('{{this.imagePath}}')">
+                <div class="blogImgOverlay">
+                  <p class="blogImgReadmore">Read more</p>
+                </div>
+              </div>
+              <div class="itemInfo">
+                <a class="itemTitle" href="/post/{{this._id}}">{{this.title}}</a>
+                <p class="itemDate">{{dateStringConvert this.date}}</p>
+                <div class="itemUnderline"></div>
+                <div class="descContainer">
+                  <p class="itemDesc">{{this.description}} <a class="readMore" href="/post/{{ this._id }}"> Read more...</a></p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/blog.js"></script>

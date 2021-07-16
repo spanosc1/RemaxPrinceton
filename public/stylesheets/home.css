@@ -1,0 +1,399 @@
+@font-face {
+  font-family: Brandon-Grotesque;
+  src: url(/fonts/Brandon_med.otf);
+}
+
+@font-face {
+  font-family: Brandon-Grotesque-Bold;
+  src: url(/fonts/Brandon_bld.otf);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+	font-size: 1rem;
+}
+
+/*Landing*/
+.v-header {
+	height: 700px;
+	display: flex;
+	align-items: center;
+}
+
+.fullscreenVideoWrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 700px;
+	overflow: hidden;
+	background-position: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.fullscreenVideoWrap video {
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.videoOverlay {
+	height: 700px;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: rgba(0,0,0,0.1);
+}
+
+.videoContent {
+	z-index: 2;
+	text-align: center;
+	margin: auto;
+}
+
+.videoContent p {
+	color: #ffffff;
+	font-family: Brandon-Grotesque-Bold;
+	font-size: 3.5em;
+	text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.videoContent input {
+	margin-left: -1px;
+	background: rbga(255, 255, 255, 0.5);
+	padding: 15px;
+	font-size: 1.3em;
+	border: 0;
+	font-family: Brandon-Grotesque;
+	outline: none;
+}
+
+.videoContent button {
+	background-color: #003ea5;
+	color: #ffffff;
+	padding: 12px 30px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #003ea5;
+	font-size: 1.3em;
+	font-family: Brandon-Grotesque;
+	outline: none;
+	margin-left: -5px;
+	margin-top: -5px;
+}
+
+#searchButton:hover {
+	cursor: pointer;
+}
+
+.inputDivider {
+	height: 30px;
+	width: 4px;
+	background-color: #777777;
+	display: inline-block;
+	margin: 0px -6px -8px -6px;
+}
+
+.inputRow {
+	width: 100vw;
+}
+
+#locationInput {
+	width: 30%;
+}
+
+#priceInput {
+	width: 20%;
+}
+
+#bedInput {
+	width: 20%;
+}
+
+#bathInput {
+	width: 20%;
+}
+
+/*Featured properties*/
+#featuredProperties {
+	opacity: 0;
+	font-size: 2.5em;
+	font-weight: bold;
+	text-align: center;
+	margin: 40px 0px 40px -5px;
+	color: #003ea5;
+	font-family: Brandon-Grotesque;
+}
+
+#featuredContainer {
+	padding: 0px 40px;
+}
+
+a.featuredCol {
+	padding: 0px 10px 20px 10px;
+	opacity: 0;
+}
+
+.featuredImage {
+	height: 270px;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	transition: box-shadow 0.3s, transform 0.3s;
+	border-radius: 3px;
+}
+
+.featuredImage:hover {
+	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-7px);
+}
+
+.featuredOverlay {
+	height: 270px;
+	width: 100%;
+	background-color: rgba(0,0,0,0.15);
+	padding: 120px 15px 15px 15px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.featuredContent {
+	margin-top: -15px;
+}
+
+.featuredListPrice {
+	color: #ffffff;
+	margin: 0px;
+	font-size: 1.5em;
+	font-family: Brandon-Grotesque, 'open-sans';
+}
+
+.featuredBedBathSqft {
+	color: #ffffff;
+	margin: 0px;
+	font-family: Brandon-Grotesque, 'open-sans';
+}
+
+.featuredAddress {
+	color: #ffffff;
+	margin: 0px;
+	font-family: Brandon-Grotesque, 'open-sans';
+}
+
+.featuredTown {
+	color: #ffffff;
+	margin: 0px;
+	font-family: Brandon-Grotesque, 'open-sans';
+}
+
+.bedBathIcon {
+	color: #ffffff;
+}
+
+.searchContainer {
+	text-align: center;
+}
+
+.searchIcon {
+	color: #ffffff;
+	font-size: 3em;
+	text-align: center;
+	opacity: 0;
+	transition: transform .2s; /* Animation */
+}
+
+.searchIcon.animate {
+	transform: scale(0.8);
+}
+
+/*Mission statement*/
+.mission {
+	padding: 165px 30px 165px 30px;
+	text-align: center;
+}
+
+#ourMission {
+	font-family: Brandon-Grotesque-Bold;
+	font-size: 3em;
+	margin-bottom: 50px;
+	color: #003ea5;
+}
+
+.section {
+	font-family: sans-serif;
+	font-weight: 200;
+	font-size: 1.7em;
+	margin: 0px 15px 0px 20px;
+	display: inline-block;
+	-ms-transform: rotate(90deg) translate(-5px); /* IE 9 */
+  -webkit-transform: rotate(90deg) translate(-5px); /* Safari 3-8 */
+	transform: rotate(90deg) translate(-5px);
+	color: #cccccc;
+}
+
+#ourMissionImg {
+	position: absolute;
+	height: 150px;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	margin-top: 80px;
+	opacity: 0.0;
+}
+
+#ourMissionText {
+	margin: 0px auto 0px auto;
+	width: 390px;
+	font-size: 1em;
+	font-family: 'Open Sans', sans-serif;
+	text-align: justify;
+	color: #555555;
+}
+
+#firstLetter {
+  float: left;
+  padding-right: 5px;
+  font-size: 300%;
+  line-height: 95%;
+  color: #d81929;
+  font-family: Brandon-Grotesque-Bold, sans-serif;
+}
+
+/*Map and Contact*/
+#contactContainer {
+	opacity: 0;
+	display: none;
+}
+
+div.contactCol {
+	padding: 0px;
+	background-image: url('https://previews.123rf.com/images/breadmaker/breadmaker1602/breadmaker160200016/53600574-home-exterior-at-night-twilight-with-beautiful-green-grass-three-car-garage-and-driveway.jpg');
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#contactContent {
+	height: 500px;
+	text-align: center;
+	display: flex;
+	background-color: rgba(0,0,0,0.3);
+}
+
+#homeMap {
+	height: 500px;
+}
+
+#contactInner {
+	margin: auto;
+}
+
+#questions {
+	font-size: 3em;
+	color: #ffffff;
+	font-family: Brandon-Grotesque-bold, sans-serif;
+}
+
+#contactButton {
+	background-color: transparent;
+	color: #ffffff;
+	padding: 6px 30px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #ffffff;
+	font-size: 1.3em;
+	font-family: Brandon-Grotesque;
+	outline: none;
+	text-decoration: none;
+}
+
+#contactButton:hover {
+	cursor: pointer;
+}
+
+@media only screen and (max-width : 1200px) {
+	.videoContent p {
+		font-size: 2.5em;
+	}
+	.videoContent input {
+		padding: 10px;
+		font-size: 1.2em;
+	}
+	.videoContent button {
+		padding: 8px 30px;
+		font-size: 1.1em;
+	}
+}
+
+@media only screen and (max-width : 992px) {
+	.videoContent p {
+		font-size: 2.2em;
+	}
+	.videoContent input {
+		font-size: 1.0em;
+	}
+	.videoContent button {
+		padding: 7px 30px;
+		font-size: 1.0em;
+	}
+	.videoContent {
+		//padding: 20px;
+	}
+	.mission {
+		padding: 70px 10px 100px 10px;
+	}
+}
+
+@media only screen and (max-width : 768px) {
+	.videoContent p {
+		font-size: 2.0em;
+	}
+	.videoContent input {
+		font-size: 0.8em;
+	}
+	.videoContent {
+		//padding: 10px;
+	}
+	.videoContent button {
+		padding: 4px 30px;
+	}
+	.inputDivider {
+		height: 25px;
+		width: 4px;
+		background-color: #777777;
+		display: inline-block;
+		margin: 4px -6px -8px -6px;
+	}
+	.mission {
+		padding: 60px 0px 90px 0px;
+	}
+	#ourMission {
+		font-size: 2.5em;
+	}
+	#ourMissionText {
+		width: 330px;
+	}
+	#featuredContainer {
+		padding: 0px 20px;
+	}
+}
+
+@media only screen and (max-width : 480px) {
+	#ourMission {
+		font-size: 2.0em;
+	}
+	#ourMissionText {
+		width: 270px;
+	}
+}

@@ -1,0 +1,340 @@
+.contactContainer {
+	min-height: calc(100vh - 120px);
+	padding-top: 100px;
+}
+
+.infoAndMapRow {
+	height: 600px;
+}
+
+div.infoRow {
+	width: 400px;
+	margin: auto;
+}
+
+.infoAndMapRow>.infoCol {
+	margin: auto;
+}
+
+.infoAndMapRow>.mapCol {
+	height: 600px;
+	margin: auto;
+	padding: 0px;
+}
+
+.mobileMapRow>.mapCol {
+	padding: 0px;
+}
+
+.iconContainer {
+	background-color: #d81929;
+	height: 55px;
+	width: 55px;
+	border-radius: 30px;
+	margin: 15px 0px 15px 0px;
+	text-align: center;
+	display: flex;
+}
+.contactIcon {
+	color: #ffffff;
+	font-size: 1.7em;
+	margin: auto;
+}
+.contactInfo {
+	font-size: 1.15em;
+	padding-left: 25px;
+	margin-bottom: 0px;
+	font-family: Brandon-Grotesque, sans-serif;
+	line-height: 85px;
+	display: inline;
+}
+
+#contactMap {
+	height: 600px;
+	width: 100%;
+	display: block;
+}
+
+#contactMap2 {
+	height: 400px;
+	width: 100%;
+	display: none;
+}
+
+.contactBackground {
+	width: 100%;
+	height: 550px;
+ 	margin: 140px 0px;
+}
+
+.contactOverlay {
+	width: 100%;
+	height: 550px;
+	background-color: rgba(0,0,0,0.4);
+	display: flex;
+}
+
+.formContainer {
+	padding: 4px;
+	border-radius: 5px;
+	margin: auto;
+	background-color: rgba(216,25,41,0.0);
+	display: block;
+}
+
+#contactUs {
+	color: #ffffff;
+	font-family: Brandon-Grotesque;
+	font-size: 2em;
+	text-align: center;
+	margin: 0px;
+}
+
+.input {
+	padding: 10px 12px 12px 12px;
+	margin: 20px 8px;
+	width: 280px;
+	height: 48px;
+	border-radius: 2px;
+	border-width: 0px;
+	outline: none;
+}
+
+.inputArea {
+	padding: 12px;
+	margin: 20px 8px;
+	width: 280px;
+	border-radius: 2px;
+	border-width: 0px;
+	resize: none;
+	outline: none;
+}
+
+#email {
+	display: block;
+}
+
+#name, #number, #message, #contactSubmit {
+	opacity: 0;
+	display: none;
+}
+
+#result {
+	color: #ffffff;
+	font-family: Brandon-Grotesque;
+	font-size: 2em;
+	display: none;
+	opacity: 0;
+	margin: auto;
+}
+
+.buttonContainer {
+	padding: 0px 12px;
+	display: flex;
+}
+
+#contactSubmit {
+	background-color: #003ea5;
+	color: #ffffff;
+	padding: 4px 30px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #003ea5;
+	font-size: 1.2em;
+	font-family: Brandon-Grotesque;
+	outline: none;
+	margin: 4px auto;
+	border-radius: 0px;
+}
+
+.instagramContainer {
+	width: 100%;
+	padding-left: 60px;
+	background-color: #003ea5;
+	opacity: 0;
+	margin: 0px 0px 140px 0px;
+}
+
+.instagramLogoContainer {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	height: 60px;
+	width: 60px;
+	display: flex;
+	background-color: #0059bd;
+}
+
+.leftContainer {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	margin-left: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 300px;
+	font-size: 1.6em;
+	background-color: #0059bd;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.rightContainer {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	margin-left: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 350px;
+	font-size: 1.6em;
+	background-color: #0059bd;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+button.slick-prev, button.slick-next {
+	opacity: 0;
+}
+
+.instagramLogo {
+	margin: auto;
+	color: #ffffff;
+	font-size: 2.3em;
+}
+
+.carousel {
+	height: 400px;
+	display: none;
+}
+
+.slider {
+  width: 50%;
+  margin: 100px auto;
+}
+
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  height: 400px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.slick-slide {
+  transition: all ease-in-out .3s;
+  margin: 0px;
+}
+
+#contactIncomplete {
+	padding: 5px;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	width: 200px;
+	margin: 30px;
+	left: calc(50% - 130px);
+	background-color: #ffffff;
+	-webkit-box-shadow: 3px 3px 6px #333;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 6px #333;  /* Firefox 3.5 - 3.6 */
+	box-shadow:         3px 3px 6px #333;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+	border-radius: 5px;
+	display: none;
+	opacity: 0;
+	margin-top: 145px;
+}
+
+#contactErrorMessage {
+	font-size: 1em;
+	margin-top: 10px;
+	font-family: Brandon-Grotesque;
+	text-align: center;
+}
+
+@media only screen and (max-width : 1200px) {
+	.carousel {
+		height: 300px;
+	}
+	.slick-slide img {
+		height: 300px;
+	}
+	.leftContainer {
+		margin-top: 200px;
+	}
+	.rightContainer {
+		margin-top: 250px;
+	}
+}
+
+@media only screen and (max-width : 992px) {
+	.leftContainer {
+		display: none;
+	}
+	.rightContainer {
+		display: none;
+	}
+	.instagramContainer {
+		padding-left: 40px;
+		padding-right: 0px;
+	}
+	.instagramLogoContainer {
+		height: 40px;
+		width: 40px;
+	}
+	.instagramLogo {
+		font-size: 1.9em;
+	}
+	.iconContainer {
+		height: 45px;
+		width: 45px;
+		margin: 12px 0px 12px 0px;
+	}
+	.contactIcon {
+		font-size: 1.4em;
+	}
+	.contactInfo {
+		font-size: 1.0em;
+		padding-left: 25px;
+		margin-bottom: 0px;
+		font-family: Brandon-Grotesque, sans-serif;
+		line-height: 65px;
+		display: inline;
+	}
+	div.infoRow {
+		width: 320px;
+	}
+	.carousel {
+		height: 270px;
+	}
+	.slick-slide img {
+		height: 270px;
+	}
+}
+
+@media only screen and (max-width : 768px) {
+	.infoAndMapRow {
+		height: 400px;
+	}
+	.infoAndMapRow>.infoCol {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+	.infoAndMapRow>.mapCol {
+		height: 400px;
+	}
+	#contactMap {
+		display: none;
+	}
+	#contactMap2 {
+		display: block;
+	}
+	#map1Col {
+		display: none;
+	}
+}

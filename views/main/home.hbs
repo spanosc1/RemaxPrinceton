@@ -1,0 +1,94 @@
+<script src="/javascripts/parallax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR1gosqIfCh1MqibdjQlULiXg4kyTq-2E&callback=myMap&libraries=places"></script>
+
+<!--Video-->
+<header class="v-header videoContainer">
+	{{!-- Desktop version --}}
+	<div
+		class="fullscreenVideoWrap parallax-window homeParallax"
+		data-parallax="scroll"
+		data-image-src="/images/fwdprincetonpictures/Nassau Princeton NJ 08540 USA-large-008-7-Community photos-1500x1000-72dpi.jpg"
+	>
+	</div>
+		
+	<div class="videoOverlay">
+	</div>
+	<div class="videoContent">
+		<p>Discover Your Perfect Home</p>
+		<form action="/property-search" method="POST">
+			<div class="inputRow">
+				<input id="locationInput" placeholder="WHERE?" name="term" type="text"/>
+				<div class="inputDivider"></div>
+				<input id="priceInput" placeholder="PRICE?" name="price" type="number" step="10000"/>
+				<!--<input id="bedInput" placeholder="BEDS?" type="number"/>
+				<div class="inputDivider"></div>
+				<input id="bathInput" placeholder="BATHS?" type="number"/>-->
+				<button type="submit" id="searchButton">SEARCH</button>
+			</div>
+		</form>
+	</div>
+</header>
+
+<!--Sections-->
+
+<!--Featured properties-->
+<div id="featuredContainer" class="container-fluid">
+	<p id="featuredProperties">Featured Properties</p>
+	<div class="row">
+		{{#each featuredHomes}}
+			<a href="{{this.fullDetailsURL}}" target="_blank" class="col-lg-3 col-md-6 featuredCol">
+				<div class="featuredImage" style="background-image: url('{{this.image.0.url}}')">
+					<div class="featuredOverlay">
+						<div class="searchContainer">
+							<i class="fas fa-search searchIcon"></i>
+						</div>
+						<div class="featuredContent">
+							<p class="featuredListPrice">{{this.listingPrice}}</p>
+							<p class="featuredBedBathSqft"><i class="fas fa-bed bedBathIcon"></i> {{this.bedrooms}}bd <i class="fas fa-bath bedBathIcon"></i> {{this.fullBaths}}ba {{this.sqFt}} sqft</p>
+							<p class="featuredAddress">{{this.address}}</p>
+							<p class="featuredTown">{{this.cityName}}, NJ</p>
+						</div>
+					</div>
+				</div>
+			</a>
+		{{/each}}
+	</div>
+</div>
+
+<!--Mission-->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="mission">
+				<span class="section">&#167;</span>
+				<span id="ourMission">Our Mission</span>
+				<span class="section">&#167;</span>
+				<p id="ourMissionText">
+					We believe real estate buyers, sellers and investors everywhere deserve the world-class services of outstanding agents who are skilled, driven and focused on achieving outstanding results.
+					<br><br>
+					We are innovators and strive to be the best!  
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Map and Contact-->
+<div id="contactContainer" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6 contactCol">
+			<div id="homeMap"></div>
+		</div>
+		<div class="col-sm-6 contactCol">
+			<div id="contactContent">
+				<div id="contactInner">
+					<a href="/contact" id="contactButton">Contact Us</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/javascripts/navreset.js"></script>
+<script type="text/javascript" src="/javascripts/home.js"></script>
+<script type="text/javascript" src="/javascripts/slick.js"></script>

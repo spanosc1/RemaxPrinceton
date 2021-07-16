@@ -1,0 +1,167 @@
+@font-face {
+  font-family: Brandon-Grotesque;
+  src: url(/fonts/Brandon_med.otf);
+}
+
+#myNav {
+	height: 67px;
+}
+
+.contactHeader {
+	height: 35px;
+	width: 100%;
+	background-color: #003ea5;
+	position: fixed;
+	top: 0;
+	z-index: 9;
+	display: inline-block;
+}
+
+.mobileContactInfoView {
+	height: 0px;
+	width: 100%;
+	background-color: #003ea5;
+	position: fixed;
+	top: 35px;
+	z-index: 9;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.mobileHeaderContactInfo {
+	margin: 5px 12px;
+	color: #ffffff;
+	font-family: Brandon-Grotesque;
+}
+
+#contactInfoRow {
+	float: left;
+	padding: auto;
+}
+
+#socialMediaRow {
+	float: right;
+}
+
+.headerContactIcon {
+	font-size: 1em;
+	margin: 10px 6px 6px 15px;
+	color: #ffffff;
+}
+
+.headerContactInfo {
+	color: #ffffff;
+	line-height: 35px;
+	font-size: 0.9em;
+}
+
+.mediaRow {
+	display: flex;
+}
+
+.mediaIconContainer {
+	height: 35px;
+	width: 35px;
+	border-radius: 15px;
+	display: flex;
+	margin: 0px 13px 2px 0px;
+}
+
+.mediaIcon {
+	height: 20px;
+	width: 20px;
+	margin: auto;
+}
+
+#hidden {
+	display: none;
+}
+
+.hidden#myNav {
+	display: none;
+}
+
+.navbar:not(#adminNav) {
+	background-color: transparent;
+	z-index: 6;
+	border-bottom: 1px solid transparent;
+	margin-top: 35px; //changeback to 40px later
+}
+
+.navbar img {
+	height: 40px;
+	width: auto;
+}
+
+.nav-link {
+	text-align: center;
+	font-family: Brandon-Grotesque;
+	font-size: 0.8em;
+	border-width: 3px;
+	border-color: transparent;
+	border-style: solid;
+	font-weight: bold;
+}
+
+.nav-item {
+	cursor: pointer;
+}
+
+button.nav-link {
+	outline: none;
+	background-color: transparent;
+}
+
+.nav-link:hover {
+	text-decoration: none;
+}
+
+.navbar-toggler .icon-bar {
+	background-color: #ffffff;
+  display: block;
+  margin: 5px 0px 5px 0px;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+#navbar-toggler {
+	border-color: #ffffff;
+}
+
+#propertiesLink {
+	background-color: #003ea5;
+	margin-left: 25px;
+	border-width: 3px;
+	border-color: #003ea5;
+	border-style: solid;
+	color: #ffffff;
+}
+
+.contactInfoMobile {
+}
+
+@media only screen and (max-width : 991px) {
+	#myNav {
+		height: auto;
+	}
+	div.dropdown-menu {
+		border: 0;
+	}
+	.navbar ul {
+		float: none;
+	 	margin: auto;
+	}
+	#propertiesLink {
+		margin-left: 0px;
+	}
+	a.dropdown-item {
+		text-align: center;
+	}
+	.nav-link {
+		font-size: 1em;
+	}
+	.headerContactInfo {
+		display: none;
+	}
+}

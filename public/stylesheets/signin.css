@@ -1,0 +1,10 @@
+.signinContainer {
+	min-height: calc(100vh - 200px);
+	background-color: #fafafa;
+	padding-top: 20vh;
+	padding-bottom: 20px;
+}
+
+#signinButton {
+	width: 100%;
+}
